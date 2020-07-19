@@ -54,12 +54,12 @@ const MovieDetails = (props) => {
                 </p>
                 <p className=" m-0 ">
                   Last Episode:
-                  <small className="text-primary">{props.lastEpisode}</small>
+                  <small className="text-primary"> {props.lastEpisode}</small>
                 </p>
 
                 <p className=" m-0">
                   Offical Site:
-                  <small className="text-primary">{props.officialSite}</small>
+                  <small className="text-primary"> {props.officialSite}</small>
                 </p>
               </div>
             </div>
@@ -103,12 +103,9 @@ const MovieContainer = styled.span`
   font-weight: 900;
   border-radius: 40%;
 `;
-// card body
 const CardBodyContainer = styled.div`
   a {
     textdecoration: none;
     color: unset;
   }
 `;
-// height: 50px;
-// width: 50px;
