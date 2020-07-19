@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { lazy, Suspense } from 'react';
+import { RecoilRoot } from 'recoil';
+
+import NavBar from './commons/NavBar';
+import Footer from './commons/Footer';
+import Home from './page/Home';
+import EpisodePage from './page/EpisodePage';
+import history from './utils/history';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import './App.css';
+
+const moviePage = lazy(() => import('./page/SeasonPage'));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+        <Suspense fallback={'loading'}>
+          <RecoilRoot>
+            <div>
+              <NavBar />
+              <Footer />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/movie" component={moviePage} />
+                <Route exact path="/seasons/:id" component={EpisodePage} />
+              </Switch>
+            </div>
+          </RecoilRoot>
+        </Suspense>
+      </Router>
     </div>
   );
 }
