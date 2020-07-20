@@ -9,7 +9,7 @@ const SeasonPage = () => {
   const [modifiedMovie, setmodifiedMovie] = useRecoilState(ModifiedMovieState);
 
   useEffect(() => {
-    const filterMovie = async (episodes) => {
+    const filterMovie = (episodes) => {
       let seasons = {};
       episodes.map((episode) => {
         if (!seasons[episode.season]) {
@@ -23,8 +23,7 @@ const SeasonPage = () => {
       setmodifiedMovie(seasons);
       localStorage.setItem('modifiedRes', JSON.stringify(seasons));
     };
-    let arrToFilter = movie._embedded.episodes;
-    filterMovie(arrToFilter);
+    filterMovie(movie._embedded.episodes);
   }, []);
 
   return (
@@ -45,7 +44,7 @@ const SeasonPage = () => {
         seasons={movie._embedded.episodes}
         about={movie.summary}
         image={movie.image.medium}
-        modifiedMovie={modifiedMovie || {}}
+        modifiedMovie={modifiedMovie}
         releaseDate={movie.premiered}
         network={movie.network.name}
         language={movie.language}

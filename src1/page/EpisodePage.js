@@ -18,7 +18,7 @@ const EpisodePage = () => {
         seasons={movie._embedded.episodes}
         about={movie.summary}
         image={movie.image.medium}
-        modifiedMovie={modifiedMovie || {}}
+        modifiedMovie={modifiedMovie}
         releaseDate={movie.premiered}
         network={movie.network.name}
         language={movie.language}
@@ -30,12 +30,10 @@ const EpisodePage = () => {
         className="card border-light mb-3 mx-auto"
         style={{ maxWidth: '1080px' }}>
         <div className="card-header text-center">
-          <strong>Season {id} List</strong>
+          <strong>Episode 1 List</strong>
         </div>
       </div>
-      {modifiedMovie && (
-        <EpisodeList episodeArray={modifiedMovie[id].episode} />
-      )}
+      <EpisodeList episodeArray={modifiedMovie[id].episode} />
     </div>
   );
 };

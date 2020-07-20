@@ -6,7 +6,7 @@ import { removeHtmlChars } from '../utils/helper';
 const MovieDetails = (props) => {
   const [startIndex, setStartIndex] = useState(0);
   const [currentKeys, setCurrentKeys] = useState([]);
-  const keys = Object.keys(props.modifiedMovie || {});
+  const keys = Object.keys(props.modifiedMovie);
 
   const next = (season, startIndex) => {
     if (startIndex > season.length - 1) {
@@ -77,7 +77,7 @@ const MovieDetails = (props) => {
                     </Link>
                   );
                 })}
-                <span onClick={paginate}>Next</span>
+                <span onClick={paginate}>Next{startIndex}</span>
               </h5>
               <p className="card-text my-4">
                 <strong>Release Date:</strong> {props.releaseDate}
